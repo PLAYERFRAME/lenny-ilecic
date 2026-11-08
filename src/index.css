@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Layout concept: a cinematic scouting dossier — full-bleed night photography,
+   condensed display type, ice-blue used only for data and live states. */
+:root {
+  --ink: #05070d;
+  --ink-2: #0b1120;
+  --line: rgba(196, 214, 255, 0.09);
+  --bone: #f3f5f9;
+  --mist: #8c97ad;
+  --ice: #8fd3ff;
+  --ice-deep: #3b8dff;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background: var(--ink);
+  }
+  body {
+    @apply bg-ink text-bone font-sans antialiased;
+    font-variation-settings: 'wdth' 100;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--ice); color: var(--ink); }
+  section[id] { scroll-margin-top: 72px; }
+  h1, h2, h3 { text-wrap: balance; }
+  :focus-visible {
+    outline: 2px solid var(--ice);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 60;
+    background: var(--ink);
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 768px) {
+    .shell {
+      padding-left: max(40px, env(safe-area-inset-left, 0px));
+      padding-right: max(40px, env(safe-area-inset-right, 0px));
+    }
+  }
+  .display {
+    font-family: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+    font-variation-settings: 'wdth' 68;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 0.86;
+    text-transform: uppercase;
+  }
+  .display-wide {
+    font-family: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+    font-variation-settings: 'wdth' 118;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-label text-mist;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+  .hairline { border-color: var(--line); }
+  .glass {
+    background: rgba(11, 17, 32, 0.62);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+  .placeholder-stripes {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(143, 211, 255, 0.045) 0 10px,
+      transparent 10px 20px
+    );
+  }
+  .btn {
+    @apply inline-flex items-center gap-2.5 rounded-full px-5 py-3 text-[13px] font-semibold uppercase tracking-[0.08em] transition-all duration-300;
+  }
+  .btn-primary { @apply btn bg-bone text-ink hover:bg-ice; }
+  .btn-ghost { @apply btn border border-white/15 text-bone hover:border-ice/60 hover:text-ice; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -50,7 +50,7 @@ export default function Academy() {
                 {academy.honours.map((h) => (
                   <div key={h.value} className="group flex flex-col border-b border-r hairline p-5 transition-colors hover:bg-white/[0.03]">
                     <dt className="mt-4 text-[13px] font-medium leading-tight text-bone">
-                      <span className="block min-h-[2.5em]">{h.label}</span>
+                      <span className="block whitespace-nowrap">{h.label}</span>
                       <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.12em] text-mist">{h.sub}</span>
                     </dt>
                     <dd className="display order-first text-[2.6rem] leading-none text-ice transition-transform duration-500 group-hover:-translate-y-1">{h.value}</dd>

@@ -38,6 +38,8 @@ export const photos = {
 export const profile = {
   firstName: 'Lenny',
   lastName: 'Ilečić',
+  /** Surname as shown in the large display headline (no diacritics, by choice). */
+  displayLastName: 'Ilecic',
   fullName: 'Lenny Ilečić',
   nationality: 'Croatia',
   dateOfBirth: '2004-06-10',
@@ -106,7 +108,7 @@ export const academy = {
     { value: 'U19', label: 'Croatian Champion', sub: '2022/23' },
     { value: 'U18', label: 'Top scorer', sub: 'Dinamo Zagreb' },
     { value: 'UYL', label: 'UEFA Youth League', sub: 'Appearances' },
-    { value: 'PLIC', label: 'Premier League Int. Cup', sub: 'U21 appearances' },
+    { value: 'PLIC', label: 'PL International Cup', sub: 'U21 appearances' },
   ],
 };
 

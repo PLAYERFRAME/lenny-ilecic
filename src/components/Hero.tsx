@@ -77,7 +77,7 @@ export default function Hero() {
         <h1 id="hero-title" className="display flex flex-col gap-[0.02em] text-[clamp(4.2rem,14vw,10.5rem)] text-bone">
           <span className="sr-only">{profile.fullName}</span>
           {[profile.firstName, profile.displayLastName].map((word, i) => (
-            <span key={word} aria-hidden="true" className="block overflow-hidden pb-[0.02em] pt-[0.05em] leading-[0.92]">
+            <span key={word} aria-hidden="true" className={`block overflow-hidden pb-[0.02em] leading-[0.92] ${i === 1 ? 'pt-[0.24em]' : 'pt-[0.05em]'}`}>
               <motion.span
                 className="block"
                 initial={{ y: '105%' }}

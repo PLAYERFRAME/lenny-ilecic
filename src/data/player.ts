@@ -38,8 +38,8 @@ export const photos = {
 export const profile = {
   firstName: 'Lenny',
   lastName: 'Ilečić',
-  /** Surname as shown in the large display headline (no diacritics, by choice). */
-  displayLastName: 'Ilecic',
+  /** Surname as shown in the large display headline. */
+  displayLastName: 'Ilečić',
   fullName: 'Lenny Ilečić',
   nationality: 'Croatia',
   dateOfBirth: '2004-06-10',

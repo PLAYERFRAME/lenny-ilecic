@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="md:col-span-6">
             <p className="display flex flex-col gap-[0.04em] text-[clamp(3.2rem,10vw,7rem)]">
               <span>Lenny</span>
-              <span className="text-ice">{profile.displayLastName}</span>
+              <span className="pt-[0.22em] text-ice">{profile.displayLastName}</span>
             </p>
             <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.14em] text-mist">
               {profile.primaryPosition.name} · {profile.nationality} · {getAge()} · {profile.preferredFoot}-footed · {profile.currentClub}

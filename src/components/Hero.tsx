@@ -62,9 +62,9 @@ export default function Hero() {
           Player Dossier · Season {season.label}
         </motion.p>
 
-        <h1 id="hero-title" className="display text-[clamp(4.4rem,15vw,11.5rem)] text-bone">
+        <h1 id="hero-title" className="display flex flex-col gap-[0.02em] text-[clamp(4.2rem,14vw,10.5rem)] !font-semibold text-bone">
           {[profile.firstName, profile.lastName].map((word, i) => (
-            <span key={word} className="-mt-[0.2em] block overflow-hidden pb-[0.04em] pt-[0.2em]">
+            <span key={word} className="block overflow-hidden pb-[0.02em] pt-[0.13em] leading-[0.92]">
               <motion.span
                 className="block"
                 initial={{ y: '105%' }}

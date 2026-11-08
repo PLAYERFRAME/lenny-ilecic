@@ -48,12 +48,12 @@ export default function Academy() {
             <Reveal delay={0.1}>
               <dl className="mt-12 grid grid-cols-2 border-l border-t hairline sm:grid-cols-4">
                 {academy.honours.map((h) => (
-                  <div key={h.value} className="group flex flex-col-reverse border-b border-r hairline p-5 transition-colors hover:bg-white/[0.03]">
-                    <dt className="mt-3 text-[13px] font-medium leading-tight text-bone">
-                      {h.label}
+                  <div key={h.value} className="group flex flex-col border-b border-r hairline p-5 transition-colors hover:bg-white/[0.03]">
+                    <dt className="mt-4 text-[13px] font-medium leading-tight text-bone">
+                      <span className="block min-h-[2.5em]">{h.label}</span>
                       <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.12em] text-mist">{h.sub}</span>
                     </dt>
-                    <dd className="display text-[2.6rem] text-ice transition-transform duration-500 group-hover:-translate-y-1">{h.value}</dd>
+                    <dd className="display order-first text-[2.6rem] leading-none text-ice transition-transform duration-500 group-hover:-translate-y-1">{h.value}</dd>
                   </div>
                 ))}
               </dl>

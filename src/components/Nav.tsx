@@ -108,7 +108,16 @@ export default function Nav() {
                 <motion.a
                   key={item.id}
                   href={`#${item.id}`}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    // Body scrolling is locked while the menu is open, so close it first, then scroll.
+                    e.preventDefault();
+                    setOpen(false);
+                    window.setTimeout(() => {
+                      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                      document.getElementById(item.id)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+                      history.replaceState(null, '', `#${item.id}`);
+                    }, 60);
+                  }}
                   className={`display flex items-baseline gap-4 py-1.5 text-[clamp(2.6rem,12vw,4rem)] ${active === item.id ? 'text-ice' : 'text-bone'}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}

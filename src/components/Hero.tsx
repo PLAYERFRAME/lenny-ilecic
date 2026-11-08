@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowDownRight, BarChart3, Play, Route } from 'lucide-react';
 import { useRef } from 'react';
 import { getAge, photos, profile, season } from '../data/player';
-import CountUp from './ui/CountUp';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -106,7 +105,7 @@ export default function Hero() {
               <span className="block text-haze">Player-provided</span>
             </dt>
             <dd className="display num text-[clamp(2.4rem,5vw,3.5rem)] text-ice">
-              <CountUp value={profile.topSpeed.value} decimals={1} />
+              {profile.topSpeed.value.toFixed(1)}
               <span className="ml-1 text-[0.42em] tracking-wide text-ice/80">KM/H</span>
             </dd>
           </div>

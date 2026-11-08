@@ -54,6 +54,8 @@ export const profile = {
   currentClub: 'NK Rudeš',
   league: 'SuperSport HNL',
   leagueDescription: 'Croatian First Division',
+  /** Short tier label used next to the league name. */
+  leagueTier: 'Croatia’s top division',
   contractExpiry: '31 May 2028',
   marketValue: { display: '€350K', full: '€350,000', source: 'Transfermarkt', date: '30 September 2026' },
   topSpeed: { value: 36.2, unit: 'km/h', source: 'player-provided' as const },
@@ -267,7 +269,7 @@ export const career: CareerEntry[] = [
     monogram: 'RU',
     period: '2026 – Present',
     level: 'Senior',
-    competition: 'SuperSport HNL',
+    competition: 'SuperSport HNL · Croatia’s top division',
     summary: 'Promotion to the Croatian First Division and continued professional development.',
     points: [
       '2026/27: 12 appearances, 3 goals, 2 assists in all competitions',

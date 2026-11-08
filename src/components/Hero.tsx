@@ -12,15 +12,27 @@ export default function Hero() {
   const imgScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.12]);
   const age = getAge();
 
+  const headline = [
+    { label: 'Top speed', value: profile.topSpeed.value.toFixed(1), unit: 'KM/H', note: 'Player-provided' },
+    { label: 'Market value', value: profile.marketValue.display, unit: null, note: (
+        <>
+          {profile.marketValue.source}
+          <span className="hidden sm:inline"> · 30.09.2026</span>
+        </>
+      ),
+    },
+    { label: 'Academy', value: 'Dinamo', unit: 'Zagreb', note: 'GNK Dinamo Zagreb' },
+  ];
+
   const snapshot = [
     { k: 'Position', v: profile.primaryPosition.code, s: profile.secondaryPositions.map((p) => p.code).join(' · ') },
     { k: 'Age', v: String(age), s: profile.dateOfBirthLabel },
     { k: 'Nationality', v: profile.nationality, s: 'HRV' },
     { k: 'Foot', v: profile.preferredFoot, s: 'Preferred' },
     { k: 'Height', v: `${profile.heightCm}`, s: 'cm' },
-    { k: 'Club', v: profile.currentClub, s: profile.league },
+    { k: 'Club', v: profile.currentClub, s: 'Zagreb' },
     { k: 'Contract', v: '05/2028', s: `Until ${profile.contractExpiry}` },
-    { k: 'Market value', v: profile.marketValue.display, s: profile.marketValue.source },
+    { k: 'League', v: profile.league, s: 'Top division' },
   ];
 
   return (
@@ -62,7 +74,7 @@ export default function Hero() {
           Player Dossier · Season {season.label}
         </motion.p>
 
-        <h1 id="hero-title" className="display flex flex-col gap-[0.02em] text-[clamp(4.2rem,14vw,10.5rem)] !font-semibold text-bone">
+        <h1 id="hero-title" className="display flex flex-col gap-[0.02em] text-[clamp(4.2rem,14vw,10.5rem)] text-bone">
           <span className="sr-only">{profile.fullName}</span>
           {[profile.firstName, profile.displayLastName].map((word, i) => (
             <span key={word} aria-hidden="true" className="block overflow-hidden pb-[0.02em] pt-[0.05em] leading-[0.92]">
@@ -91,6 +103,10 @@ export default function Hero() {
             {profile.nationality} <span className="px-1.5 text-ice">•</span> {profile.currentClub}{' '}
             <span className="px-1.5 text-ice">•</span> {age} years old
           </p>
+          <p className="mt-3 inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-ice/30 bg-ice/[0.06] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.06em] text-ice sm:px-3.5 sm:text-[11px] sm:tracking-[0.12em]">
+            <span className="h-1.5 w-1.5 rounded-full bg-ice" aria-hidden="true" />
+            {profile.league} · {profile.leagueTier}
+          </p>
         </motion.div>
 
         {/* Headline metrics */}
@@ -98,36 +114,25 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.75, ease }}
-          className="mt-9 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3"
+          className="mt-10 grid max-w-[920px] grid-cols-2 border-t border-white/15 sm:grid-cols-3"
         >
-          <div className="flex flex-col-reverse">
-            <dt className="label mt-1">
-              Top speed
-              <span className="block text-haze">Player-provided</span>
-            </dt>
-            <dd className="display num text-[clamp(2.4rem,5vw,3.5rem)] text-ice">
-              {profile.topSpeed.value.toFixed(1)}
-              <span className="ml-1 text-[0.42em] tracking-wide text-ice/80">KM/H</span>
-            </dd>
-          </div>
-          <div className="flex flex-col-reverse">
-            <dt className="label mt-1">
-              Market value
-              <span className="block text-haze">Transfermarkt · 30.09.2026</span>
-            </dt>
-            <dd className="display num text-[clamp(2.4rem,5vw,3.5rem)]">{profile.marketValue.display}</dd>
-          </div>
-          <div className="col-span-2 flex flex-col-reverse sm:col-span-1">
-            <dt className="label mt-1">
-              Academy
-              <span className="block text-haze">Development</span>
-            </dt>
-            <dd className="display text-[clamp(1.5rem,2.6vw,1.9rem)] leading-[0.95]">
-              GNK Dinamo
-              <br />
-              Zagreb
-            </dd>
-          </div>
+          {headline.map((m, i) => (
+            <div
+              key={m.label}
+              className={`flex flex-col gap-3 pt-5 ${i === 0 ? 'pr-5' : ''} ${i === 1 ? 'border-l border-white/10 pl-5' : ''} ${
+                i === 2 ? 'col-span-2 mt-5 border-t border-white/10 pt-5 sm:col-span-1 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-5' : ''
+              } sm:pr-5`}
+            >
+              <dt className="font-mono text-[11px] uppercase leading-none tracking-label text-bone/75">{m.label}</dt>
+              <dd className="flex flex-col gap-3">
+                <span className="display num flex items-baseline gap-2 whitespace-nowrap text-[clamp(2.5rem,4.6vw,3.6rem)] leading-none text-bone">
+                  {m.value}
+                  {m.unit && <span className="text-[0.4em] tracking-[0.04em] text-ice">{m.unit}</span>}
+                </span>
+                <span className="font-mono text-[10.5px] uppercase leading-none tracking-[0.12em] text-haze">{m.note}</span>
+              </dd>
+            </div>
+          ))}
         </motion.dl>
 
         <motion.div

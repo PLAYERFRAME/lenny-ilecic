@@ -51,7 +51,7 @@ export default function Career() {
               <span className="text-ice">pathway</span>
             </>
           }
-          intro="From the Dinamo Zagreb academy to senior football in the Croatian First Division. Select a club to see the detail."
+          intro="From the Dinamo Zagreb academy to senior football in the SuperSport HNL, Croatia’s top division. Select a club to see the detail."
         />
 
         {/* Timeline track */}

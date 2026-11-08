@@ -50,7 +50,7 @@ export default function Performance() {
           }
           intro={
             <>
-              Senior figures for {season.club} in the SuperSport HNL and the Croatian Cup.{' '}
+              Senior figures for {season.club} in the SuperSport HNL, Croatia’s top division, and the Croatian Cup.{' '}
               <span className="text-bone/70">{season.note}.</span>
             </>
           }
@@ -129,7 +129,14 @@ export default function Performance() {
                   <tbody>
                     {season.competitions.map((c) => (
                       <tr key={c.id} className="border-b hairline">
-                        <th scope="row" className="py-4 font-medium text-bone">{c.name}</th>
+                        <th scope="row" className="py-4 font-medium text-bone">
+                          {c.name}
+                          {c.id === 'hnl' && (
+                            <span className="ml-2.5 whitespace-nowrap rounded-full border border-ice/30 px-2 py-0.5 align-middle font-mono text-[9.5px] font-normal uppercase tracking-[0.12em] text-ice">
+                              Top division
+                            </span>
+                          )}
+                        </th>
                         <td className="py-4 text-right text-bone/85">{c.stats.appearances}</td>
                         <td className="py-4 text-right text-bone/85">{c.stats.goals}</td>
                         <td className="py-4 text-right text-bone/85">{c.stats.assists}</td>
@@ -159,7 +166,7 @@ export default function Performance() {
               />
               <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
               <figcaption className="absolute bottom-5 left-5 right-5">
-                <span className="label !text-bone/70">NK Rudeš · SuperSport HNL</span>
+                <span className="label !text-bone/70">NK Rudeš · SuperSport HNL · Top division</span>
               </figcaption>
             </figure>
           </Reveal>

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="shell">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
-            <p className="display flex flex-col gap-[0.04em] text-[clamp(3.2rem,10vw,7rem)] !font-semibold">
+            <p className="display flex flex-col gap-[0.04em] text-[clamp(3.2rem,10vw,7rem)]">
               <span>Lenny</span>
               <span className="text-ice">{profile.displayLastName}</span>
             </p>
